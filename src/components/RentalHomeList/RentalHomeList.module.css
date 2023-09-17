@@ -1,0 +1,35 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+
+.item {
+  margin-bottom: 2rem;
+  width: calc(30% - 10px);
+  box-sizing: border-box;
+  margin-left: 3rem;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    justify-content: flex-start; /* Align items to the start of the container */
+  }
+
+  .item {
+    margin-left: 2rem;
+    width: calc(44% - 10px); /* Adjust the width for 2 items per row */
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    justify-content: flex-start; /* Align items to the start of the container */
+  }
+
+  .item {
+    width: calc(100% - 10px); /* Adjust the width for 1 item per row */
+    margin-left: 0;
+}
+}
