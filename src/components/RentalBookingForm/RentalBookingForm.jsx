@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
@@ -32,7 +32,7 @@ const RentalBookingForm = () => {
   });
   const [success, setSuccess] = useState(false);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -41,9 +41,9 @@ const RentalBookingForm = () => {
         val: value,
       },
     });
-  };
+  });
 
-  const validateInputs = () => {
+  const validateInputs = useCallback(() => {
     let valid = true;
     const newErrors = {
       username: "",
@@ -73,7 +73,6 @@ const RentalBookingForm = () => {
       valid = false;
     }
 
-
     setFormData((prev) => {
       return {
         ...prev,
@@ -97,16 +96,18 @@ const RentalBookingForm = () => {
     });
 
     return valid;
-  };
+  }, [formData]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateInputs()) {
-
-      dispatch(bookHome(rentalHome.id));
-      setSuccess(true);
-    }
-  };
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (validateInputs()) {
+        dispatch(bookHome(rentalHome.id));
+        setSuccess(true);
+      }
+    },
+    [rentalHome, validateInputs, setSuccess]
+  );
 
   if (!rentalHome) {
     return <div>Booking Not Available </div>;
@@ -179,11 +180,14 @@ const RentalBookingForm = () => {
           <h1 className={styles.closedLabel}>Booking Closed</h1>
         )}
         <div className={styles.btnCnt}>
-          <Link to={`/view-home/${rentalHome.id}`} className={styles.detailsBtn}>
-            <MasterButton name="Property Details" className={styles.navBtn}/>
+          <Link
+            to={`/view-home/${rentalHome.id}`}
+            className={styles.detailsBtn}
+          >
+            <MasterButton name="Property Details" className={styles.navBtn} />
           </Link>
           <Link to="/" className={styles.homeBtn}>
-            <MasterButton name="Home" className={styles.navBtn}/>
+            <MasterButton name="Home" className={styles.navBtn} />
           </Link>
         </div>
       </div>
