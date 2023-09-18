@@ -9,3 +9,7 @@
     font-weight: 600;
     border-radius: 1rem;
 }
+
+.disabled {
+    background-color: #7b9a82cb;
+}

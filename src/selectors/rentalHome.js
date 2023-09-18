@@ -7,8 +7,12 @@ export const rentalsLoaderSelector = createSelector(baseState, (state) => ({
   loadError: state.loadError,
 }));
 
-export const rentalsDataSelector = createSelector(baseState, (state) => {
-  console.log("state",state);
-  console.log(state.list);
-  return { list: state.list };
-});
+export const rentalsDataSelector = createSelector(baseState, (state) => ({
+  list: state.list,
+}));
+
+export const rentalHomeDetailsSelector = (id) =>
+  createSelector(baseState, (state) => {
+    const rentalHome = state.list.find((i) => i.id === id);
+    return rentalHome;
+  });

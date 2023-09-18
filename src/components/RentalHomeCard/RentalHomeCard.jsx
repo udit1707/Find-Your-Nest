@@ -2,8 +2,10 @@ import MasterButton from "../../ui/MasteryButton/MasterButton";
 import styles from "./RentalHomeCard.module.css";
 import classNames from "classnames";
 import { FaRupeeSign } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const RentalHomeCard = ({
+  id,
   img,
   title = "2 BHK Apartment",
   location = "btm layout stage 2",
@@ -16,7 +18,7 @@ const RentalHomeCard = ({
     <div className={classNames(styles.card, { [className]: className })}>
       <div className={styles.imgContainer}>
         <img
-          src="https://nestaway-houses.s3.ap-southeast-1.amazonaws.com/uploads/images/thumb_large_427cbd10-2055-4076-8415-475a455be3b1.png"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpv2Vx_IqFRfjZWWHs2bUZ_jRKMx-SEWxCsB-rF_ES6sfWAKfQqlOTRUCvTcLBT9R5ijA&usqp=CAU"
           alt="property-img"
           className={styles.img}
         />
@@ -48,8 +50,13 @@ const RentalHomeCard = ({
         </div>
         <div className={styles.separator}></div>
         <div className={styles.btnContainer}>
-          <MasterButton name="Book Now" />
-          <MasterButton name="View Details" className={styles.detailsBtn} />
+          <Link to={`/book-home/${id}`}>
+            <MasterButton name="Book Now" className={styles.detailsBtn} />
+          </Link>
+
+          <Link to={`/view-home/${id}`}>
+            <MasterButton name="View Details" className={styles.detailsBtn} />
+          </Link>
         </div>
       </div>
     </div>

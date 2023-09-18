@@ -112,6 +112,7 @@
 
 .detailsBtn {
   margin-top: 0.8rem;
+  width: 100%;
 }
 
 @media (max-width: 390px) {
