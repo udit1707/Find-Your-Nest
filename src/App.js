@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import "./App.css";
-import RentalHomeDetails from "./components/RentalHomeDetails";
-import RentalHomeList from "./components/RentalHomeList/RentalHomeList";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
 import { getRentalHomesData } from "./store/rentalHome";
+import RentalHomeDetails from "./components/RentalHomeDetails";
+import RentalHomeList from "./components/RentalHomeList/RentalHomeList";
 import RentalBookingForm from "./components/RentalBookingForm";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();

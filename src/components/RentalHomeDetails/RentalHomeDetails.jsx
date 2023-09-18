@@ -1,12 +1,11 @@
-import { useParams } from "react-router-dom";
-import { rentalHomeDetailsSelector } from "../../selectors/rentalHome";
+import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import styles from "./RentalHomeDetails.module.css";
+
+import { rentalHomeDetailsSelector } from "../../selectors/rentalHome";
 import MasterButton from "../../ui/MasteryButton/MasterButton";
-import { Link } from "react-router-dom";
+import styles from "./RentalHomeDetails.module.css";
 
 const AmenityUI = ({ amenties }) => {
-  console.log(amenties);
   if (amenties.length === 0)
     return <div className={styles.amentites}>No Amenities Available!</div>;
   else {
@@ -34,8 +33,6 @@ const AmenityUI = ({ amenties }) => {
 const RentalHomeDetails = () => {
   const { id } = useParams();
   const rentalHome = useSelector(rentalHomeDetailsSelector(Number(id)));
-
-  console.log(id);
 
   if (rentalHome) {
     return (

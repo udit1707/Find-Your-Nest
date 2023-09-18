@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { rentalHomeDetailsSelector } from "../../selectors/rentalHome";
+
 import { bookHome } from "../../store/rentalHome";
+import { rentalHomeDetailsSelector } from "../../selectors/rentalHome";
 import MasterButton from "../../ui/MasteryButton/MasterButton";
 import styles from "./RentalBookingForm.module.css";
 
@@ -67,14 +68,11 @@ const RentalBookingForm = () => {
     }
 
     const enteredDate = new Date(formData.date.val);
-    console.log(enteredDate, givenDate);
     if (isNaN(enteredDate.getTime()) || enteredDate < givenDate) {
-      console.log("Error");
       newErrors.date = "Enter a valid date greater than or equal to 2023-09-23";
       valid = false;
     }
 
-    console.log(valid);
 
     setFormData((prev) => {
       return {
@@ -103,12 +101,8 @@ const RentalBookingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting...");
-    console.log(validateInputs());
     if (validateInputs()) {
-      console.log("working...");
-      // Handle form submission here
-      console.log("Form submitted:", formData);
+
       dispatch(bookHome(rentalHome.id));
       setSuccess(true);
     }

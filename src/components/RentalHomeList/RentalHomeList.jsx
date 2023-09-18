@@ -1,22 +1,20 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+
 import {
   rentalsDataSelector,
   rentalsLoaderSelector,
 } from "../../selectors/rentalHome";
 import RentalHomeCard from "../RentalHomeCard/RentalHomeCard";
-import { useEffect } from "react";
-import { getRentalHomesData } from "../../store/rentalHome";
 import styles from "./RentalHomeList.module.css";
 
 const RentalHomeList = () => {
-  const dispatch = useDispatch();
   const { isLoading, loadError } = useSelector(rentalsLoaderSelector);
   const { list } = useSelector(rentalsDataSelector);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
   } else if (loadError) {
-    <h1>Error.</h1>;
+    <h1>Error</h1>;
   } else if (list?.length > 0) {
     return (
       <div className={styles.grid}>

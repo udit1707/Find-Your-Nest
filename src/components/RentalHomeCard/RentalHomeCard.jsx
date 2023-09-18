@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
+import classNames from "classnames";
+
+import { FaRupeeSign } from "react-icons/fa";
 import MasterButton from "../../ui/MasteryButton/MasterButton";
 import styles from "./RentalHomeCard.module.css";
-import classNames from "classnames";
-import { FaRupeeSign } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const RentalHomeCard = ({
   id,
-  img,
+  img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpv2Vx_IqFRfjZWWHs2bUZ_jRKMx-SEWxCsB-rF_ES6sfWAKfQqlOTRUCvTcLBT9R5ijA&usqp=CAU",
   title = "2 BHK Apartment",
   location = "btm layout stage 2",
   rent = "12000",
@@ -18,7 +19,7 @@ const RentalHomeCard = ({
     <div className={classNames(styles.card, { [className]: className })}>
       <div className={styles.imgContainer}>
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpv2Vx_IqFRfjZWWHs2bUZ_jRKMx-SEWxCsB-rF_ES6sfWAKfQqlOTRUCvTcLBT9R5ijA&usqp=CAU"
+          src={img}
           alt="property-img"
           className={styles.img}
         />
